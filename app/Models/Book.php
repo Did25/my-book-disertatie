@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
+use Elasticquent\ElasticquentTrait;
 
 class Book extends Model
 {
     use HasFactory;
+    use ElasticquentTrait;
 
     protected $connection ='mongodb';
     protected $collection ='my-books';
@@ -27,5 +29,6 @@ class Book extends Model
         "original_title",
         "ratings_count",
         "title",
+        "description",
     ];
 }
