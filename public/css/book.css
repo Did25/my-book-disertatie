@@ -1,0 +1,17 @@
+.book-view{
+    text-justify: auto;
+    margin: auto;
+}
+.book-image{
+    
+}
+.title{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.subtitle{
+    font-size: medium;
+    font-weight: bolder;
+    margin-top: 20px;
+}

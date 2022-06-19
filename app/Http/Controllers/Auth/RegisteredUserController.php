@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Session;
 
 class RegisteredUserController extends Controller
 {
@@ -43,6 +44,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'current_user'
         ]);
 
         event(new Registered($user));
@@ -50,5 +52,29 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function index()
+    {
+        $users = User::all();
+        $response = ['users' => $users];
+        return view('users')->with($response);
+    }
+
+    public function edit(Request $request, $id){
+        $user = Auth::user();
+        if ($user->role == 'admin') {
+            $data = $request->all();
+            $user = User::find($id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->role= $request->role;
+            $user->save();
+
+            return redirect('users')->with('message', 'User updated!');
+        } else {
+            $message = 'Unauthorized';
+            return redirect('users')->with(Session::flash('message', $message));
+        }
     }
 }
