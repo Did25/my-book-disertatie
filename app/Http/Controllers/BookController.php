@@ -30,6 +30,13 @@ class BookController extends Controller
         $response = ['book' => $book, 'collections' => $collections];
         return view('book')->with($response);
     }
+    public function editBook(Request $request, $id) {
+            $data = $request->all();
+            $book = Book::find($id);
+            $book->update($data);
+            return redirect('books');
+
+    }
     public function addInCollection(Request $request, $book_id)
     {
         $collection_id = $request->collection;

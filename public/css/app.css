@@ -1486,7 +1486,61 @@ select {
     text-align: center;
 }
 .nav-bar {
+  
+    height: 100px;
+    margin-top: 20px;
+}
+.nav-bar img {
+    height: 120px;
+    width: 120px;
+}
+header {
+    background-color: burlywood;
+    border-bottom: #6b7280;
+    border-bottom-style: double;
+}
+.header-content {
+    display: block ruby;
+}
+footer {
+    background-color: burlywood;
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+}
+.page-link {
+    background-color: transparent;
+    border: none;
+    color: black;
+}
+.page-item.active .page-link{
+    background-color: transparent;
+    font-weight: 900;
+    color: black;
+}
+.collections {
+    display: block;
+    margin-top: 20px;
+}
+.collection {
+  padding: 10px;
+}
+.collection p {
+    text-transform: uppercase;
+}
+.add-collection {
+    display: flex;
+    width: 40%;
+}
+.search-input {
+    border-radius: 4px;
+}
+.sticky {
     position: sticky;
     z-index: 999;
     top: 0;
+}
+.search-section {
+    background-image: url("../images/book2.jpeg");
+    color: red;
 }

@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <ul class="pagination" style="display: block ruby; text-align:center;">
+    <ul class="pagination" style="display: block ruby; text-align:center; padding-bottom: 30px; padding-top:30px">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <li class="page-item disabled">

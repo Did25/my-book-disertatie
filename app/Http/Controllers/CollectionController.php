@@ -7,6 +7,7 @@ use App\Models\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use App\Models\Book;
 
 class CollectionController extends Eloquent
 {
@@ -40,5 +41,15 @@ class CollectionController extends Eloquent
         $this->collection->save();
 
         return back()->with('message', 'Collection created!');
+    }
+    public function show($collection_id) {
+        $collection = Collection::where('_id', $collection_id)->first();
+        $my_books = [];
+        foreach($collection->books as $book) {
+            $my_book = Book::where('_id', $book)->first();
+            $my_books[] = $my_book;
+        }
+        $response = ['collection' => $collection, 'books' => $my_books];
+        return view('collection')->with($response);
     }
 }

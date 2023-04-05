@@ -29,5 +29,6 @@ class Book extends Model
         "original_title",
         "ratings_count",
         "title",
+        "description",
     ];
 }

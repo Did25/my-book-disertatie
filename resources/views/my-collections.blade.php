@@ -10,8 +10,9 @@
         <p>{{Session::get('message') }}</p>
     </div>
     @endif
+    <div class="row">
     <!-- add form -->
-    <div class="justify-content mx-4 my-3" id="addCollection">
+    <div class="justify-content mx-4 my-3 add-collection column" id="addCollection">
         <form style="border-style:double;" name="add-collection-form" id="add-collection-form" method="post" action="{{url('my-collections/create')}}">
             <!-- <button class="btn btn-primary float-right mr-4 my-2" onclick="openForm('addCompany')">x</button> -->
             <div class="form-title">
@@ -26,10 +27,12 @@
         </form>
     </div>
     <!-- end add form -->
-    <div>
+    <div class="collections column">
         @foreach($collections as $collection)
-        <p>{{$collection->name}}</p>
+        <div class="collection">
+            <a href="{{url('my-collections', $collection->_id)}}" target="_top"><p>{{$collection->name}}</p></a>
+        </div>
         @endforeach
     </div>
-
+    </div>
 </x-app-layout>

@@ -28,6 +28,7 @@ Route::resource('users', 'App\Http\Controllers\Auth\RegisteredUserController');
 Route::get('users/edit/{id}', 'App\Http\Controllers\Auth\RegisteredUserController@edit');
 Route::resource('my-collections', 'App\Http\Controllers\CollectionController');
 Route::post('my-collections/create', 'App\Http\Controllers\CollectionController@create');
+Route::post('my-collections/{id}','App\Http\Controllers\CollectionController@show');
 Route::get('books/add-in-collection/{_id}', 'App\Http\Controllers\BookController@addInCollection');
 Route::get('book/{id}', 'App\Http\Controllers\BookController@displayBook');
 Route::get('book/search', 'App\Http\Controllers\BookController@searchBook');
